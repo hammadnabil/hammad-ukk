@@ -48,7 +48,7 @@
             @endforeach
         </select>
     </div>
-    <button type="submit" class="btn btn-succes">simpan</button>
+    <button type="submit" class="btn btn-primary">simpan</button>
     <a href="{{ route('admin.users.index')}}" class="btn btn-secondary">kembali</a>
 </form>
 @endsection

@@ -33,7 +33,7 @@ class AdminController extends Controller
             'role_id' => 'required|exists:roles,id',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -42,7 +42,7 @@ class AdminController extends Controller
 
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Tambah User',
+            'action' => 'Tambah User (' . $user->name.')' ,
             'ip_address' => request()->ip(),
             'user_agent' => request()->header('User-Agent'),
         ]);
@@ -66,7 +66,7 @@ class AdminController extends Controller
 
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Update User',
+            'action' => 'Update User ( ' . $user->name.' )',   
             'ip_address' => request()->ip(),
             'user_agent' => request()->header('User-Agent'),
         ]);
@@ -89,7 +89,7 @@ class AdminController extends Controller
 
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Hapus User',
+            'action' => 'Hapus User ( ' . $user->name.' )',
             'ip_address' => request()->ip(),
             'user_agent' => request()->header('User-Agent'),
         ]);
