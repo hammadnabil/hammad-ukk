@@ -13,8 +13,8 @@ class WaiterController extends Controller
 {
     public function indexOrder()
     {
-        $orders = Order::all()->map(function ($order) {
-            $items = json_decode($order->items, true);
+        $orders = Order::where('status', 'belum dibayar')->get()->map(function ($order) {
+            $items = json_decode($order->items, true); 
             $order->decoded_items = collect($items ?: [])->map(function ($item) {
                 $menu = Menus::find($item['id'] ?? 0);
                 $price = $menu ? (int) $menu->price : 0;
@@ -28,7 +28,7 @@ class WaiterController extends Controller
             $order->total_price = $order->decoded_items->sum('subtotal');
             return $order;
         });
-
+    
         return view('waiter.orders.index', compact('orders'));
     }
 
@@ -50,7 +50,7 @@ class WaiterController extends Controller
         $order = Order::create([
             'order_code' => Str::random(8),
             'items' => json_encode($request->menus),
-            'status' => 'pending',
+            'status' => 'belum dibayar',
         ]);
 
         ActivityLog::create([

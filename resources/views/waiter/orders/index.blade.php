@@ -5,7 +5,7 @@
 @section('content')
 
 <h2>list menu</h2>
-<a href="{{route('manager.menu.create')}}" class="btn btn-primary mb-3">Tambah menu</a>
+<a href="{{route('waiter.orders.create')}}" class="btn btn-primary mb-3">buat pesanan</a>
 <a href="{{ route('dashboard') }}" class="btn btn-secondary mb-3">Kembali</a>
 
 <table class="table table-bordered">
@@ -39,7 +39,7 @@
                 </td>
                 <td>{{ $order->created_at->format('d-m-Y H:i') }}</td>
                 <td>
-                    <a href="{{ route('waiter.orders.edit', $order->id) }}" class="btn btn-sm btn-outline-warning"></a>
+                    <a href="{{ route('waiter.orders.edit', $order->id) }}" class="btn btn-sm btn-outline-warning">edit</a>
                 </td>
             </tr>
         @endforeach

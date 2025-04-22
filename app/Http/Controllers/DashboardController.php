@@ -18,6 +18,8 @@ class DashboardController extends Controller
             return view('dashboard.manager');
         }if($user->role->name==='waiter') {
             return view('dashboard.waiter');
+        }if($user->role->name==='kasir') {
+            return view('dashboard.kasir');
         }
 
         return redirect()->route('login')->withErrors('role tidak dikenali');

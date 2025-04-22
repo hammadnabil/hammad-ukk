@@ -22,7 +22,7 @@
         @foreach ($menus as $menu)
             <tr>
                 <td>{{$menu->name}}</td>
-                <td>Rp:{{$menu->price}}</td>
+                <td>Rp:{{number_format($menu->price,0,',', '.')}}</td>
                 <td>{{$menu->description}}</td>
                 <td>
                     <a href="{{ route('manager.menu.edit', $menu->id) }}" class="btn btn-warning btn-sm">Edit</a>

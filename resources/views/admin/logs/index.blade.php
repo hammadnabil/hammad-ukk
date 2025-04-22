@@ -20,7 +20,6 @@
         <div class="col-md-4">
             <div class="input-group">
                 <input type="date" name="date" id="dateInput" class="form-control" value="{{ request('date') }}">
-                <button type="button" class="btn btn-secondary" onclick="setToday()">Hari Ini</button>
             </div>
         </div>
         <div class="col-md-4">
@@ -38,7 +37,7 @@
             <th>Nama Pegawai</th>
             <th>Aksi</th>
             <th>IP Address</th>
-            <th>Browser</th>
+            <th>User Agent</th>
         </tr>
     </thead>
     <tbody>
@@ -58,11 +57,5 @@
     {{ $logs->links() }}
 </div>
 
-<script>
-    function setToday() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('dateInput').value = today;
-    }
-    </script>
     
 @endsection
